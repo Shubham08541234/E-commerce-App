@@ -7,60 +7,57 @@ import ProductItem from "../components/ProductItem";
 const Collection = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
-  
-  const [allProducts, setAllProducts] = useState([]);
+
+  const [productToShow, setProductToShow] = useState(products);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
-  
-  const [relevent, setRelevent] = useState([]);
-  
-  console.log("relevent: ", relevent);
 
-  const onSelectChange = (e) => {
-      let copyOfProd = allProducts.slice();
+  console.log("category: ", category);
+  console.log("subCategory: ", subCategory);
 
-      if(e.target.value === "low-high")copyOfProd.sort((a,b) => a.price - b.price);
-      else if(e.target.value === "high-low")copyOfProd.sort((a,b) => b.price - a.price);
-      else copyOfProd = relevent;
-
-      console.log("copyOfProd: ", copyOfProd);
-      setAllProducts(copyOfProd);
-  }
-
-  const toggleFilter = () => {
-      let copyOfproducts = products.slice();
-
-      if(category.length > 0){
-        copyOfproducts = copyOfproducts.filter(eachProducts => category.includes(eachProducts.category));
+  const toggleCategory = (e) => {
+      const val = e.target.value;
+      let cat;
+      if(category.includes(val)){
+        cat = category.filter(e => e !== val);
       }
+      else cat = [...category, val];
 
-      if(subCategory.length > 0){
-        copyOfproducts = copyOfproducts.filter(eachProducts => subCategory.includes(eachProducts.subCategory))
-      }
-
-      setAllProducts(copyOfproducts);
-      setRelevent(copyOfproducts);
-  }
-  useEffect(() => {
-      toggleFilter();
-  },[category, subCategory]);
-
-  // funtion to toggle category
-  function toggleCategory(e) {
-    if (category.includes(e.target.value)) {
-      setCategory(item => item.filter(a => a !== e.target.value));
-    } else {
-      setCategory([...category, e.target.value]);
-    }
+      setCategory(cat);
   }
 
   const toggleSubCategory = (e) => {
-    if(subCategory.includes(e.target.value)){
-      setSubCategory(subCategory => subCategory.filter(b => b !== e.target.value));
-    }
-    else setSubCategory([...subCategory, e.target.value]);
-  };
+      const val = e.target.value;
+      let cat;
+      if(subCategory.includes(val)){
+        cat = subCategory.filter(e => e !== val);
+      }
+      else cat = [...subCategory, val];
 
+      setSubCategory(cat);
+  }
+
+
+  const toggleFilter = () => {
+    let prod = products.slice();
+
+    if(category && category.length > 0){
+      prod = prod.filter(each => category.includes(each.category));
+    }
+
+    if(subCategory && subCategory.length > 0){
+      prod = prod.filter(each => subCategory.includes(each.subCategory));
+    }
+
+    setProductToShow(prod);
+    
+  }
+
+  useEffect(() => {
+    toggleFilter();
+  },[category, subCategory]);
+  
+  
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-10 pt-10 border-t">
       {/* filter options */}
@@ -161,7 +158,6 @@ const Collection = () => {
             name=""
             id=""
             className="border-2 border-gray-300 text-sm px-2"
-            onChange={onSelectChange}
           >
             <option value="relavent">Sort by: Relavent</option>
             <option value="low-high">Sort by: Low to High</option>
@@ -172,7 +168,7 @@ const Collection = () => {
         {/* map products */}
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 gap-y-6">
-          {allProducts?.map((item, idx) => (
+          {productToShow?.map((item, idx) => (
             <ProductItem
               key={idx}
               id={item._id}
