@@ -1,0 +1,11 @@
+{
+  "name": "e-comm",
+  "version": "1.0.0",
+  "description": "An E-commerce app-SBUY",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shubham singh",
+  "license": "ISC"
+}
