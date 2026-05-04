@@ -1,5 +1,5 @@
 import React from 'react'
-import { Hero,LatestCollection, BestSeller, OurPolicy, NewsLetterBox, Footer } from '../components'
+import { Hero,LatestCollection, BestSeller, OurPolicy, NewsLetterBox } from '../components'
 
 const Home = () => {
   return (

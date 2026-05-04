@@ -4,7 +4,7 @@ import { assets } from '../Assets/frontend_assets/assets'
 
 const Hero = () => {
   return (
-    <div className='flex flex-col sm:flex-row border border-gray-400'>
+    <section className='flex flex-col sm:flex-row border border-gray-400'>
         {/* left side */}
       <div className='w-full sm:w-1/2 flex items-center justify-center py-10 sm:py-0'>
         <div className='text-[#414141]'>
@@ -21,7 +21,7 @@ const Hero = () => {
       </div>
       {/* right side */}
       <img src={assets.hero_img} className="w-full sm:w-1/2" alt="heroImage" />
-    </div>
+    </section>
   )
 }
 

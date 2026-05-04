@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { assets } from "../Assets/frontend_assets/assets";
 import { Link, NavLink } from "react-router";
+import { ShopContext } from "../context/ShopContext";
 
 const NavBar = () => {
   const [visible, setVisible] = useState(false);
+
+  const {setActive} = useContext(ShopContext);
 
   return (
     <nav className="flex items-center justify-between py-5 px-10 font-medium">
@@ -32,6 +35,7 @@ const NavBar = () => {
           src={assets.search_icon}
           alt="searchIcon"
           className="w-5 cursor-pointer"
+          onClick={() => setActive(true)}
         />
         <div className="group relative">
           <img
