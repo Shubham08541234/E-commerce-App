@@ -1,9 +1,10 @@
 import React from 'react'
-import { Hero,LatestCollection, BestSeller, OurPolicy, NewsLetterBox } from '../components'
+import { Hero,LatestCollection, BestSeller, OurPolicy, NewsLetterBox, SearchBar } from '../components'
 
 const Home = () => {
   return (
     <div>
+      <SearchBar />
       <Hero/>
       <LatestCollection />
       <BestSeller />

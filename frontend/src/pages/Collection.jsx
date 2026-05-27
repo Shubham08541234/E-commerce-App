@@ -22,7 +22,7 @@ const Collection = () => {
     setProductToShow(() => products.filter(e => {
       const name = e.name.toLowerCase();
       const words = name.split(/\s+/);
-      return words.some(word => word.startsWith(searchVal));
+      return words.some(word => word.startsWith(searchVal.toLowerCase()));
     }));
   }
 
