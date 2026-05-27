@@ -19,8 +19,6 @@ const Cart = () => {
         }
       }
     }
-
-    
     setCartData(tempData);
   };
 
