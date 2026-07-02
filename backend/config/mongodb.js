@@ -8,6 +8,7 @@ const mongoDB = async () => {
     mongoose.connection.on('error', (err) => {
         console.log("DB connection error: ", err);
     })
+    console.log("MONGODB_URI:", process.env.MONGODB_URI);
     await mongoose.connect(`${process.env.mongoDB_URI}/e-commerce`);
 }
 
