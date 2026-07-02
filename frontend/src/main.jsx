@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router';
-import {About, Cart, Collection, Contact, Home, Login, Orders, PlaceOrder, Product} from './pages/index.js';
+import {About, Cart, Collection, Contact, Home, Login, Orders, PlaceOrder, Product, Verify} from './pages/index.js';
 import ShopContextProvider from './context/ShopContextProvider.jsx';
 
 
@@ -40,6 +40,7 @@ const router = createBrowserRouter(
       <Route path='login' element={<Login/>}/>
       <Route path='place-order' element={<PlaceOrder/>}/>
       <Route path='orders' element={<Orders/>}/>
+      <Route path='verify' element={<Verify/>}/>
     </Route>
   )
 )

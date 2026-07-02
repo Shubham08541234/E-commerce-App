@@ -3,10 +3,13 @@ import { ShopContext } from "../context/ShopContext";
 import { Title } from "../components";
 import { assets } from "../Assets/frontend_assets/assets";
 import CartTotal from "../components/CartTotal";
+import { useNavigate } from "react-router";
 const Cart = () => {
   const { products, currency, cartItems, deleteCartItem, updateCartQuantity } = useContext(ShopContext);
 
   const [cartData, setCartData] = useState([]);
+
+  const navigate = useNavigate();
 
   // const [cartVal, setCartVal] = useState(second)
 
@@ -56,7 +59,7 @@ const Cart = () => {
                 </div>
                 <input onChange={(e) => updateCartQuantity(item._id, item.size, Number(e.target.value))} className="border max-w-10 sm:max-w-20 px-1 sm:px-2 sm:py-1" type="number" min={1} Value={item.quantity}/>
                 <img 
-                onClick={ () => deleteCartItem(item._id, item.size)}
+                onClick={ () => deleteCartItem(item._id, item.size,0)}
                 className="w-4 sm:w-5 mr-4 cursor-pointer" 
                 src={assets.bin_icon} 
                 alt="img"
@@ -68,7 +71,7 @@ const Cart = () => {
       </div>
 
       <CartTotal />
-      <button onClick={() => navigate('/place-order')} className='border bg-gray-800 mt-4 px-4 py-2.5 text-gray-100'>Proceed To Checkout</button>
+      <button onClick={() => navigate('/place-order')} className='border cursor-pointer bg-gray-800 mt-4 px-4 py-2.5 text-gray-100'>Proceed To Checkout</button>
     </div>
   );
 };

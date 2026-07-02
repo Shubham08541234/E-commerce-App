@@ -7,16 +7,15 @@ const Collection = () => {
   const { products } = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
 
-  const [productToShow, setProductToShow] = useState(products);
+  const [productToShow, setProductToShow] = useState([]);
   const [category, setCategory] = useState([]);
   const [subCategory, setSubCategory] = useState([]);
 
   const [searchVal, setSearchVal] = useState("");
 
-  
-
-  console.log("category: ", category);
-  console.log("subCategory: ", subCategory);
+  useEffect(() => {
+    setProductToShow(products);
+  },[products])
 
   const searchedProduct = () => {
     setProductToShow(() => products.filter(e => {
