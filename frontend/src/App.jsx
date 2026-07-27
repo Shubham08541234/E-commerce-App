@@ -2,10 +2,9 @@ import { useState } from "react";
 import { Routes, Route, Link, Outlet } from "react-router";
 import "./App.css";
 import { Footer, NavBar, SearchBar } from "./components";
-import { ToastContainer, toast } from 'react-toastify'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
-  const [count, setCount] = useState(0);
 
   const [active, setActive] = useState(true);
 

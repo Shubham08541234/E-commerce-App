@@ -10,7 +10,7 @@ const Login = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const {token, setToken, backendUrl} = useContext(ShopContext);
+  const {token, setToken, backendUrl, setUser} = useContext(ShopContext);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -31,6 +31,7 @@ const Login = () => {
       if(currentState === "Login"){
         const response = await axios.post(`${backendUrl}/api/user/login`, {email, password})
         console.log(response);
+        setUser(response.data);
         if(response.data.success){
           setToken(response.data.token);
           localStorage.setItem('token', response.data.token);

@@ -28,7 +28,11 @@ const routes = createBrowserRouter(
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<App />}>
+    <Route path="/" element={
+        <ShopContextProvider>
+          <App />
+        </ShopContextProvider>
+    }>
       {/* renders inside <Outlet /> */}
       <Route index element={<Home />} />
       <Route path="home" element={<Home />} />
@@ -46,9 +50,5 @@ const router = createBrowserRouter(
 )
 
 createRoot(document.getElementById('root')).render(
-  <ShopContextProvider>
-    <RouterProvider router={router} >
-      <App />
-    </RouterProvider>
-  </ShopContextProvider>
+  <RouterProvider router={router} />
 )
